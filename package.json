@@ -1,8 +1,8 @@
 {
   "name": "app-presion-arterial",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Aplicación para registrar presión arterial",
-  "author": "Armando Monge Carreño <armando_ss9@hotmail.com>",
+  "author": "Armando Monge Quevedo <armandomongequevedo@gmail.com>",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -13,13 +13,23 @@
     "productName": "NOX Health",
     "win": {
       "target": "nsis",
-      "icon": "icon.ico"
+      "icon": "icon.ico",
+      "sign": false
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
-      "createStartMenuShortcut": true
+      "createStartMenuShortcut": true,
+      "installerHeader": "installerHeader.bmp",
+      "installerSidebar": "installerSidebar.bmp",
+      "installerIcon": "installerIcon.ico",
+      "showRunCheckbox": true,
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "installerLanguages": ["English", "Spanish"],
+      "license": "license.txt",
+      "include": "installer.nsh"
     },
     "files": [
       "main.js",
@@ -35,7 +45,19 @@
       "reminders.html",
       "style.css",
       "logo.png",
-      "icon.ico"
+      "icon.ico",
+      "installerHeader.bmp",
+      "installerSidebar.bmp",
+      "installerIcon.ico",
+      "license.txt",
+      "installer.nsh"
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "TheNoxlol",
+        "repo": "nox-health-app"
+      }
     ]
   },
   "dependencies": {
@@ -43,8 +65,8 @@
     "chart.js": "^4.4.4",
     "csv-parse": "^5.5.6",
     "dotenv": "^16.4.5",
-    "electron-updater": "^6.3.9",
-    "firebase": "^11.4.0",
+    "electron-updater": "^6.3.4",
+    "firebase": "^10.13.2",
     "html2canvas": "^1.4.1",
     "node-schedule": "^2.1.1",
     "nodemailer": "^6.9.15",

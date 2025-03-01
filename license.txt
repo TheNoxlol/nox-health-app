@@ -1,0 +1,7 @@
+Licencia de NOX Health
+
+© 2025 NOX CORP. Todos los derechos reservados.
+
+Este software se proporciona "tal cual", sin garantía de ningún tipo, expresa o implícita. El autor no será responsable de ningún daño derivado del uso de este software.
+
+Puedes instalar y usar este software para fines personales. No está permitido distribuir, modificar ni realizar ingeniería inversa de este software sin el permiso expreso del autor.

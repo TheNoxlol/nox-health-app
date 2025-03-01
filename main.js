@@ -21,6 +21,14 @@ let reminders = {};
 let alertsEnabled = false;
 let lastAlertSent = null;
 
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
 function createMainWindow() {
   mainWindow = new BrowserWindow({
     width: 1920,
@@ -101,14 +109,6 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
-});
-
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
 });
 
 ipcMain.handle('register-user', async (event, data) => {
