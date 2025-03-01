@@ -18,7 +18,7 @@ NOX Health es una aplicación diseñada para ayudarte a registrar y monitorear t
 ## Instrucciones de instalación
 
 1. **Descarga el instalador**:
-   - Descarga el instalador `NOX Health Setup 1.0.0.exe` 
+   - - Descarga el instalador `NOX Health Setup 1.0.1.exe` desde el siguiente enlace: [https://github.com/TheNoxlol/nox-health-app/releases/tag/v1.0.1](#).
 
 2. **Ejecuta el instalador**:
    - Haz doble clic en `NOX Health Setup 1.0.0.exe` para iniciar la instalación.
