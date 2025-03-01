@@ -1,0 +1,12 @@
+# Archivos de entorno
+.env
+
+# Carpeta de dependencias
+node_modules/
+
+# Carpeta de compilación
+dist/
+
+# Archivos temporales
+*.log
+*.tmp

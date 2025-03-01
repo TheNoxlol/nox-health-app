@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-KdyoNO/In1xLwi/mWfODQId/KGO/FH2WKLaGssly8o0='; style-src 'self' 'unsafe-inline';">
+    <title>NOX Health</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'system';
+        const theme = savedTheme === 'system' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : savedTheme;
+        document.documentElement.setAttribute('data-theme', theme);
+    </script>
+    <script defer src="profile.js"></script>
+</head>
+<body>
+    <div class="container fade-in">
+        <div class="header">
+            <h1>Perfil de Usuario</h1>
+            <select id="theme-select">
+                <option value="light">Tema Claro</option>
+                <option value="dark">Tema Oscuro</option>
+                <option value="system">Tema del Sistema</option>
+            </select>
+        </div>
+        <div class="card">
+            <h2>Datos Personales</h2>
+            <div id="user-info">
+                <p><strong>Nombre:</strong> <span id="nombre"></span></p>
+                <p><strong>Apellido Paterno:</strong> <span id="apellidoPaterno"></span></p>
+                <p><strong>Apellido Materno:</strong> <span id="apellidoMaterno"></span></p>
+                <p><strong>Edad:</strong> <span id="edad"></span></p>
+                <p><strong>Sexo:</strong> <span id="sexo"></span></p>
+                <p><strong>Peso:</strong> <span id="peso"></span> kg</p>
+                <p><strong>Estatura:</strong> <span id="estatura"></span> cm</p>
+                <p><strong>Correo:</strong> <span id="email"></span></p>
+                <p><strong>Teléfono:</strong> <span id="telefono"></span></p>
+            </div>
+            <form id="edit-form">
+                <h3>Editar Datos</h3>
+                <div class="input-group">
+                    <label>Nombre: <input type="text" id="edit-nombre" required></label>
+                    <label>Apellido Paterno: <input type="text" id="edit-apellidoPaterno" required></label>
+                    <label>Apellido Materno: <input type="text" id="edit-apellidoMaterno" required></label>
+                    <label>Fecha de Nacimiento: <input type="date" id="edit-fechaNacimiento" required></label>
+                    <label>Sexo: 
+                        <select id="edit-sexo" required>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="input-group">
+                    <label>Peso (kg): <input type="number" id="edit-peso" required step="0.1" min="0"></label>
+                    <label>Estatura (cm): <input type="number" id="edit-estatura" required min="0"></label>
+                    <label>Teléfono: <input type="tel" id="edit-telefono" required></label>
+                    <label>Nueva Contraseña (opcional): <input type="password" id="edit-password"></label>
+                </div>
+                <label>Alertas de Presión: <input type="checkbox" id="alerts-enabled" checked></label>
+                <button type="submit">Guardar Cambios</button>
+            </form>
+            <button id="back-btn">Volver</button>
+        </div>
+    </div>
+    <div id="notification" class="notification hidden"></div>
+</body>
+</html>

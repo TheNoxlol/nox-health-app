@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-KdyoNO/In1xLwi/mWfODQId/KGO/FH2WKLaGssly8o0='; style-src 'self' 'unsafe-inline';">
+    <title>NOX Health</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'system';
+        const theme = savedTheme === 'system' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : savedTheme;
+        document.documentElement.setAttribute('data-theme', theme);
+    </script>
+    <script defer src="reminders.js"></script>
+</head>
+<body>
+    <div class="container fade-in">
+        <div class="header">
+            <h1>Configurar Recordatorios</h1>
+            <select id="theme-select">
+                <option value="light">Tema Claro</option>
+                <option value="dark">Tema Oscuro</option>
+                <option value="system">Tema del Sistema</option>
+            </select>
+        </div>
+        <div class="card">
+            <h2>Agregar Recordatorio</h2>
+            <form id="reminder-form">
+                <label>Tipo de Recordatorio: 
+                    <select id="reminder-type" required>
+                        <option value="measure-pressure">Medir Presión</option>
+                        <option value="take-medication">Tomar Medicamento</option>
+                        <option value="other">Otro</option>
+                    </select>
+                </label>
+                <label>Hora del Recordatorio: <input type="time" id="reminder-time" required></label>
+                <button type="submit">Guardar Recordatorio</button>
+            </form>
+            <h2>Recordatorios Activos</h2>
+            <div id="reminders-list"></div>
+            <button id="back-btn">Volver</button>
+        </div>
+    </div>
+    <div id="notification" class="notification hidden"></div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'91971881fbb07b93',t:'MTc0MDgxNTc2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-KdyoNO/In1xLwi/mWfODQId/KGO/FH2WKLaGssly8o0='; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+    <title>NOX Health</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'system';
+        const theme = savedTheme === 'system' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : savedTheme;
+        document.documentElement.setAttribute('data-theme', theme);
+    </script>
+    <script defer src="login.js"></script>
+</head>
+<body>
+    <div id="intro-overlay" class="intro-overlay">
+        <div class="logo-container">
+            <img src="logo.png" alt="NOX CORP Logo" class="logo">
+        </div>
+    </div>
+    <div class="container fade-in" style="display: none;" id="login-content">
+        <div class="header">
+            <h1>Registro de Presión Arterial</h1>
+            <select id="theme-select">
+                <option value="light">Tema Claro</option>
+                <option value="dark">Tema Oscuro</option>
+                <option value="system">Tema del Sistema</option>
+            </select>
+        </div>
+        <div class="card">
+            <h2>Iniciar Sesión</h2>
+            <form id="login-form">
+                <label>Correo: <input type="email" id="login-email" required></label>
+                <label>Contraseña: <input type="password" id="login-password" required></label>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </div>
+        <div class="card">
+            <h2>Registrarse</h2>
+            <form id="register-form">
+                <div class="input-group">
+                    <label>Nombre: <input type="text" id="nombre" required></label>
+                    <label>Apellido Paterno: <input type="text" id="apellidoPaterno" required></label>
+                    <label>Apellido Materno: <input type="text" id="apellidoMaterno" required></label>
+                    <label>Fecha de Nacimiento: <input type="date" id="fechaNacimiento" required></label>
+                    <label>Sexo: 
+                        <select id="sexo" required>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="input-group">
+                    <label>Peso (kg): <input type="number" id="peso" required step="0.1" min="0"></label>
+                    <label>Estatura (cm): <input type="number" id="estatura" required min="0"></label>
+                    <label>Correo: <input type="email" id="email" required></label>
+                    <label>Teléfono: <input type="tel" id="telefono" required></label>
+                    <label>Contraseña: <input type="password" id="password" required></label>
+                </div>
+                <button type="submit">Registrarse</button>
+            </form>
+        </div>
+    </div>
+    <div id="notification" class="notification hidden"></div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'91975741c8ad457c',t:'MTc0MDgxODMzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>

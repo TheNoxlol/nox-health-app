@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'sha256-KdyoNO/In1xLwi/mWfODQId/KGO/FH2WKLaGssly8o0='; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+    <title>NOX Health</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'system';
+        const theme = savedTheme === 'system' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : savedTheme;
+        document.documentElement.setAttribute('data-theme', theme);
+    </script>
+    <script defer src="renderer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container fade-in">
+        <div class="header">
+            <h1>Registro de Presión Arterial</h1>
+            <div class="user-info">
+                <span id="user-name"></span>
+                <button id="profile-btn" title="Perfil">👤</button>
+                <button id="logout-btn" title="Cerrar Sesión">🚪</button>
+                <select id="theme-select">
+                    <option value="light">Tema Claro</option>
+                    <option value="dark">Tema Oscuro</option>
+                    <option value="system">Tema del Sistema</option>
+                </select>
+            </div>
+        </div>
+        <div class="card">
+            <form id="registro-form">
+                <div class="input-group">
+                    <label>Fecha: <input type="date" id="fecha" required></label>
+                    <label>Hora: <input type="time" id="hora" required></label>
+                    <label>Sistólica: <input type="number" id="sistolica" required min="0"></label>
+                    <label>Diastólica: <input type="number" id="diastolica" required min="0"></label>
+                    <label>Pulso: <input type="number" id="pulso" required min="0"></label>
+                </div>
+                <label>Comentario: <textarea id="comentario" rows="2" placeholder="Opcional"></textarea></label>
+                <button type="submit">Guardar</button>
+            </form>
+        </div>
+
+        <h2>Historial</h2>
+        <div class="card" id="historial"></div>
+
+        <h2>Tendencias</h2>
+        <div class="card" id="trends">
+            <div class="date-range">
+                <label>Desde: <input type="date" id="date-from-trends"></label>
+                <label>Hasta: <input type="date" id="date-to-trends"></label>
+                <button id="update-trends">Actualizar Tendencias</button>
+            </div>
+            <p>Promedio Sistólica: <span id="avg-sistolica">0</span> mmHg</p>
+            <p>Promedio Diastólica: <span id="avg-diastolica">0</span> mmHg</p>
+            <p>Período: <span id="trends-period"></span></p>
+        </div>
+        
+        <h2>Gráfica</h2>
+        <div class="card">
+            <div class="date-range">
+                <label>Desde: <input type="date" id="date-from"></label>
+                <label>Hasta: <input type="date" id="date-to"></label>
+                <button id="update-chart">Actualizar Gráfica</button>
+            </div>
+            <canvas id="graficaPresion"></canvas>
+        </div>
+
+        <div class="buttons">
+            <div class="date-range">
+                <label>Desde: <input type="date" id="date-from-pdf"></label>
+                <label>Hasta: <input type="date" id="date-to-pdf"></label>
+                <button id="exportarPDF">Exportar a PDF</button>
+            </div>
+            <div class="date-range">
+                <label>Desde: <input type="date" id="date-from-csv"></label>
+                <label>Hasta: <input type="date" id="date-to-csv"></label>
+                <button id="exportarCSV">Exportar a CSV</button>
+            </div>
+            <button id="importarDatos">Importar Datos</button>
+            <button id="reminders-btn">Configurar Recordatorios</button>
+        </div>
+    </div>
+    <div id="logo-footer">
+        <img src="logo.png" alt="NOX CORP Logo" class="footer-logo">
+    </div>
+    <div id="notification" class="notification hidden"></div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'91975741c8ad457c',t:'MTc0MDgxODMzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
