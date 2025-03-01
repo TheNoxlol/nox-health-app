@@ -58,8 +58,8 @@ NOX Health es una aplicación diseñada para ayudarte a registrar y monitorear t
 
 Si tienes problemas con la instalación o el uso de la aplicación, ponte en contacto con el soporte:
 
-- **Correo electrónico**: armandomongequevedo@gmail.com *(sustituye con tu correo de soporte preferido)*.
-- **Horario de soporte**: Lunes a viernes, 9:00 AM - 5:00 PM (UTC-6).
+- **Correo electrónico**: nox.heatlh.notificaciones@gmail.com.
+
 
 ## Notas adicionales
 
